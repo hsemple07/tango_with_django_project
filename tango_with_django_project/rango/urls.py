@@ -1,5 +1,9 @@
-from django.urls import path
+from django.urls import path, reverse
 from rango import views
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
+from django.shortcuts import redirect
+
 
 app_name = 'rango'
 
@@ -11,6 +15,8 @@ urlpatterns = [
     path('category/<slug:category_name_slug>/add_page/',
          views.add_page, name='add_page'),
     path('register/', views.register, name='register'),
+    path('login/', views.user_login, name='login'),
+    path('restricted/', views.restricted, name='restricted'),
 ]
 
 
